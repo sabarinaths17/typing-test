@@ -1059,13 +1059,8 @@ function setupListeners() {
     }
   });
 
-  // Ghost input keydown: catch backspace when focused directly
+  // Ghost input keydown: space only (backspace is handled by document keydown above)
   $('ghostInput').addEventListener('keydown', e => {
-    if (e.key === 'Backspace') {
-      e.preventDefault();
-      processKey('Backspace');
-      _ghostPrev = $('ghostInput').value;
-    }
     if (e.key === ' ') {
       e.preventDefault();
       processKey(' ');
