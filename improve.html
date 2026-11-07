@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Improve Your Typing — TypeForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .improve-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-bottom: 4rem;
+    }
+    .improve-hero {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .improve-hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .improve-hero p {
+      color: var(--text-dim);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--primary-s);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      transition: background 0.2s;
+    }
+    .back-link:hover { background: color-mix(in srgb, var(--primary) 18%, transparent); }
+    .tip-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .tip-section:hover { border-color: var(--border-2); }
+    .tip-section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-s);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tip-section h2 .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+    .tip-section p {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+    .tip-section p:last-child { margin-bottom: 0; }
+    .tip-section ul {
+      margin: 0.5rem 0 0.75rem 1.25rem;
+      padding: 0;
+    }
+    .tip-section li {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
+    .tip-section li strong { color: var(--text); font-weight: 600; }
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+      margin: 1.25rem 0;
+      flex-wrap: wrap;
+    }
+    .key {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.6rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-bottom: 3px solid var(--border-2);
+      border-radius: 6px;
+      color: var(--text-dim);
+      min-width: 2rem;
+      text-align: center;
+    }
+    .key.home { color: var(--primary-s); border-color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, transparent); }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .resource-card {
+      display: block;
+      text-decoration: none;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .resource-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .resource-card .rc-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .resource-card .rc-desc {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .wpm-bar-wrap { margin: 1rem 0; }
+    .wpm-bar { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+    .wpm-bar-label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); width: 90px; flex-shrink: 0; }
+    .wpm-bar-fill { height: 8px; border-radius: 4px; background: var(--primary); transition: width 0.3s; }
+    .wpm-bar-val { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--primary-s); min-width: 55px; }
+    .daily-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .daily-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem; text-align: center; }
+    .daily-card .dc-val { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--primary-s); }
+    .daily-card .dc-lab { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.15rem; }
+    .cta-box {
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta-box h3 { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; }
+    .cta-box p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-text">TypeForge</span><span class="logo-cursor" aria-hidden="true">_</span>
+    </div>
+    <a href="index.html" class="btn-ghost" style="font-size:0.88rem;text-decoration:none">← Back to Test</a>
+    <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <div class="improve-wrap">
+
+      <div class="improve-hero">
+        <h1>How to Type Faster</h1>
+        <p>A practical guide covering everything from finger placement and posture to building long-term speed and accuracy. Follow these principles consistently and you'll see measurable improvement within weeks.</p>
+      </div>
+
+      <!-- 1. Touch Typing -->
+      <div class="tip-section">
+        <h2>01 — Master Touch Typing <span class="tag">Foundation</span></h2>
+        <p>Touch typing means typing without looking at the keyboard. It is the single most impactful skill you can build. Glancing at your keys breaks your flow, slows you down, and caps your ceiling — professional typists never look down.</p>
+        <p>Start slow. It will feel uncomfortable for the first week. That discomfort is your brain rewiring. Push through it.</p>
+        <ul>
+          <li><strong>Commit fully</strong> — resist the urge to look. Cover the keyboard or use a blank key set if needed.</li>
+          <li><strong>Slow down to speed up</strong> — typing at 80% accuracy at 30 WPM is more valuable than hunting at 60 WPM with constant corrections.</li>
+          <li><strong>Every key has an assigned finger.</strong> Stick to the assignment even when it feels awkward.</li>
+        </ul>
+      </div>
+
+      <!-- 2. Home Row -->
+      <div class="tip-section">
+        <h2>02 — Learn the Home Row <span class="tag">Fundamentals</span></h2>
+        <p>Your fingers rest on the <strong>home row</strong> — ASDF (left hand) and JKL; (right hand) — and return there after every keystroke. This is your anchor. The small bumps on F and J are your tactile guides.</p>
+        <div class="keyboard-row">
+          <div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div><div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div><div class="key">O</div><div class="key">P</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="key home">A</div><div class="key home">S</div><div class="key home">D</div><div class="key home">F</div><div class="key">G</div><div class="key">H</div><div class="key home">J</div><div class="key home">K</div><div class="key home">L</div><div class="key home">;</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="key">Z</div><div class="key">X</div><div class="key">C</div><div class="key">V</div><div class="key">B</div><div class="key">N</div><div class="key">M</div><div class="key">,</div><div class="key">.</div>
+        </div>
+        <p style="text-align:center;font-size:0.82rem;margin-top:0.5rem">Purple = home row keys</p>
+        <ul>
+          <li><strong>Left pinky</strong> → A &amp; Shift, <strong>Left ring</strong> → S, <strong>Left middle</strong> → D, <strong>Left index</strong> → F, G</li>
+          <li><strong>Right index</strong> → J, H, <strong>Right middle</strong> → K, <strong>Right ring</strong> → L, <strong>Right pinky</strong> → ; &amp; Shift</li>
+          <li>Thumbs handle <strong>Space</strong> — use whichever feels natural, usually the dominant hand's thumb.</li>
+        </ul>
+      </div>
+
+      <!-- 3. Posture -->
+      <div class="tip-section">
+        <h2>03 — Posture &amp; Ergonomics <span class="tag">Setup</span></h2>
+        <p>Poor posture leads to fatigue and eventually injury. Good posture lets you type longer without strain.</p>
+        <ul>
+          <li><strong>Sit upright</strong> with your back supported. Avoid hunching toward the screen.</li>
+          <li><strong>Elbows at ~90°</strong> and wrists level with or slightly below your keyboard. Your wrists should float, not press against the desk.</li>
+          <li><strong>Screen at eye level</strong> — use a stand if needed. Looking down all day strains your neck.</li>
+          <li><strong>Feet flat on the floor.</strong> If your chair is too high, use a footrest.</li>
+          <li><strong>Keyboard tilt</strong> — flat or slightly tilted away from you (negative tilt) is easiest on your wrists. The raised legs on the back of most keyboards are ergonomically backwards.</li>
+          <li><strong>Take breaks.</strong> The 20-20-20 rule: every 20 minutes, look 20 feet away for 20 seconds. Stretch your fingers and wrists regularly.</li>
+        </ul>
+      </div>
+
+      <!-- 4. Speed vs Accuracy -->
+      <div class="tip-section">
+        <h2>04 — Accuracy First, Speed Second <span class="tag">Method</span></h2>
+        <p>This is the most common mistake: chasing WPM before building accuracy. High error rates slow you down more than a slower, precise pace. Every correction costs you more time than the mistake saved.</p>
+        <p>Target <strong>95%+ accuracy</strong> at your current speed before pushing for more WPM. If you're below 90%, you're practicing mistakes — slow down until accuracy climbs.</p>
+        <div class="wpm-bar-wrap">
+          <div class="wpm-bar"><span class="wpm-bar-label">Beginner</span><div class="wpm-bar-fill" style="width:12%"></div><span class="wpm-bar-val">&lt; 30 WPM</span></div>
+          <div class="wpm-bar"><span class="wpm-bar-label">Average</span><div class="wpm-bar-fill" style="width:28%"></div><span class="wpm-bar-val">40–60 WPM</span></div>
+          <div class="wpm-bar"><span class="wpm-bar-label">Good</span><div class="wpm-bar-fill" style="width:46%"></div><span class="wpm-bar-val">60–80 WPM</span></div>
+          <div class="wpm-bar"><span class="wpm-bar-label">Fast</span><div class="wpm-bar-fill" style="width:65%"></div><span class="wpm-bar-val">80–100 WPM</span></div>
+          <div class="wpm-bar"><span class="wpm-bar-label">Expert</span><div class="wpm-bar-fill" style="width:85%"></div><span class="wpm-bar-val">100–130 WPM</span></div>
+          <div class="wpm-bar"><span class="wpm-bar-label">Elite</span><div class="wpm-bar-fill" style="width:100%"></div><span class="wpm-bar-val">130+ WPM</span></div>
+        </div>
+        <p>The global average is around 40–55 WPM. Consistent daily practice for 3–6 months can take most people to 80+ WPM.</p>
+      </div>
+
+      <!-- 5. Problem Keys -->
+      <div class="tip-section">
+        <h2>05 — Target Your Weak Keys <span class="tag">Deliberate Practice</span></h2>
+        <p>Typing speed is limited by your slowest keys and sequences. Random practice doesn't fix targeted weaknesses — deliberate practice does.</p>
+        <ul>
+          <li><strong>Identify</strong> which keys or bigrams slow you down. Common offenders: Q, Z, X, P, numbers, and common combos like "ion", "tion", "th".</li>
+          <li><strong>Drill them specifically</strong> — type rows of words containing those letters until they feel smooth.</li>
+          <li><strong>Words &gt; random letters.</strong> Typing "question" ten times is more useful than typing "q" a hundred times — your brain learns in context.</li>
+          <li><strong>Track your worst sequences</strong> in the analytics tab and prioritize them.</li>
+        </ul>
+      </div>
+
+      <!-- 6. Practice Routine -->
+      <div class="tip-section">
+        <h2>06 — Daily Practice Routine <span class="tag">Consistency</span></h2>
+        <p>Frequency beats duration. 15 minutes every day outperforms 2 hours once a week. Typing is a motor skill — it lives in muscle memory, which is built through repetition over time, not cramming.</p>
+        <div class="daily-grid">
+          <div class="daily-card"><div class="dc-val">15</div><div class="dc-lab">min/day minimum</div></div>
+          <div class="daily-card"><div class="dc-val">30</div><div class="dc-lab">min/day for fast gains</div></div>
+          <div class="daily-card"><div class="dc-val">21</div><div class="dc-lab">days to build a habit</div></div>
+          <div class="daily-card"><div class="dc-val">3–6</div><div class="dc-lab">months to 80+ WPM</div></div>
+        </div>
+        <p style="margin-top:1rem">A solid daily routine: 5 min warm-up (easy mode), 10 min hard focused practice, 5 min free typing on something you actually need to write.</p>
+        <ul>
+          <li><strong>Warm up slowly</strong> — don't start at full speed. Let your fingers wake up.</li>
+          <li><strong>Use the Hard difficulty</strong> on TypeForge to practice technical vocabulary if you code.</li>
+          <li><strong>Transcription practice</strong> — type out articles, book excerpts, or code you need to read anyway. Real text is more useful than random words.</li>
+        </ul>
+      </div>
+
+      <!-- 7. Common Mistakes -->
+      <div class="tip-section">
+        <h2>07 — Habits to Break <span class="tag">Common Pitfalls</span></h2>
+        <ul>
+          <li><strong>Two-finger ("hunt and peck") typing</strong> — physically limits you to ~40 WPM. Touch typing is the only path to real speed.</li>
+          <li><strong>Looking at the keyboard</strong> — breaks focus and flow every single time.</li>
+          <li><strong>Chasing WPM immediately</strong> — leads to sloppy habits that are hard to unlearn.</li>
+          <li><strong>Typing through pain.</strong> Wrist pain, finger pain, or forearm ache are signals to rest and check your posture.</li>
+          <li><strong>Not returning to home row.</strong> If your fingers wander, accuracy collapses on the next word.</li>
+          <li><strong>Inconsistent finger assignment.</strong> Always use the same finger for each key. Inconsistency means each keypress requires a tiny decision.</li>
+          <li><strong>Skipping accuracy targets.</strong> If you can't hit 95% at 40 WPM, don't try to hit 95% at 60 WPM yet.</li>
+        </ul>
+      </div>
+
+      <!-- 8. Resources -->
+      <div class="tip-section">
+        <h2>08 — Recommended Tools <span class="tag">Resources</span></h2>
+        <p>Use TypeForge for daily timed tests and tracking your progress. Supplement with these:</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://www.keybr.com" target="_blank" rel="noopener">
+            <div class="rc-name">Keybr</div>
+            <div class="rc-desc">Adaptive lessons targeting your weak keys</div>
+          </a>
+          <a class="resource-card" href="https://monkeytype.com" target="_blank" rel="noopener">
+            <div class="rc-name">Monkeytype</div>
+            <div class="rc-desc">Minimalist timed tests with deep analytics</div>
+          </a>
+          <a class="resource-card" href="https://www.typeracer.com" target="_blank" rel="noopener">
+            <div class="rc-name">TypeRacer</div>
+            <div class="rc-desc">Competitive real-text racing with others</div>
+          </a>
+          <a class="resource-card" href="https://www.typing.com" target="_blank" rel="noopener">
+            <div class="rc-name">Typing.com</div>
+            <div class="rc-desc">Structured lessons from beginner to advanced</div>
+          </a>
+          <a class="resource-card" href="https://www.ratatype.com" target="_blank" rel="noopener">
+            <div class="rc-name">Ratatype</div>
+            <div class="rc-desc">Finger diagram lessons and placement drills</div>
+          </a>
+          <a class="resource-card" href="https://10fastfingers.com" target="_blank" rel="noopener">
+            <div class="rc-name">10FastFingers</div>
+            <div class="rc-desc">Top-1000-words tests and multiplayer mode</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-box">
+        <h3>Ready to practice?</h3>
+        <p>Apply what you've read. Even 10 minutes of focused practice today will compound over the next month.</p>
+        <a href="index.html" class="btn-primary btn-lg" style="display:inline-block;text-decoration:none">Open TypeForge →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Lightweight theme toggle for this standalone page
+    (function() {
+      const saved = localStorage.getItem('tf_theme') || 'dark';
+      document.documentElement.dataset.theme = saved;
+      document.getElementById('themeToggle').addEventListener('click', function() {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('tf_theme', next);
+      });
+    })();
+  </script>
+</body>
+</html>

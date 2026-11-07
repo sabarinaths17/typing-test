@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeForge — Typing Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <span class="logo-text">TypeForge</span><span class="logo-cursor" aria-hidden="true">_</span>
+    </div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-view="home">Home</button>
+      <button class="nav-btn" data-view="test">Test</button>
+      <button class="nav-btn" data-view="analytics">Analytics</button>
+      <button class="nav-btn" data-view="leaderboard">Leaderboard</button>
+    </nav>
+    <div class="header-actions">
+      <!-- Settings -->
+      <div class="settings-wrap">
+        <button class="icon-btn" id="settingsBtn" title="Sound settings" aria-label="Sound settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+        <!-- Settings panel -->
+        <div class="settings-panel" id="settingsPanel">
+          <p class="sp-label">Typing Sound</p>
+          <div class="control-group" id="sfxGroup">
+            <button class="ctrl-btn active" data-sfx="off">Off</button>
+            <button class="ctrl-btn" data-sfx="mechanical">Mech</button>
+            <button class="ctrl-btn" data-sfx="soft">Soft</button>
+            <button class="ctrl-btn" data-sfx="typewriter">Typer</button>
+          </div>
+          <div class="sp-vol-row" id="sfxVolRow">
+            <label class="sp-label" for="sfxVolume">Volume</label>
+            <input type="range" id="sfxVolume" min="0" max="1" step="0.05" value="0.6">
+          </div>
+        </div>
+      </div>
+      <!-- Theme toggle -->
+      <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HOME VIEW ===== -->
+    <section class="view active" id="view-home">
+      <div class="home-wrap">
+
+        <div class="home-hero">
+          <div class="home-logo">TypeForge<span class="logo-cursor">_</span></div>
+          <p class="home-tagline">Train your fingers. Sharpen your mind.</p>
+          <div class="home-hero-actions">
+            <button class="btn-primary btn-lg" id="heroStartBtn">Start Typing →</button>
+            <a href="improve.html" class="btn-ghost" target="_blank" rel="noopener">How to Improve ↗</a>
+          </div>
+        </div>
+
+        <!-- Quick stats — shown only if records exist -->
+        <div class="home-stats hidden" id="homeStats">
+          <div class="stat-card">
+            <div class="sc-big" id="hBestWpm">–</div>
+            <div class="sc-lab">Best WPM</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="hAvgWpm">–</div>
+            <div class="sc-lab">Avg WPM</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="hLastWpm">–</div>
+            <div class="sc-lab">Last WPM</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="hTotalTests">0</div>
+            <div class="sc-lab">Tests</div>
+          </div>
+        </div>
+
+        <!-- Recent tests mini-table -->
+        <div class="home-recent hidden" id="homeRecent">
+          <h3 class="sub-title">Recent Tests</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>WPM</th><th>Accuracy</th><th>Difficulty</th><th>Duration</th><th>Date</th></tr>
+              </thead>
+              <tbody id="homeRecentBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== TEST VIEW ===== -->
+    <section class="view" id="view-test">
+
+      <!-- Controls row -->
+      <div class="controls" id="controls">
+        <div class="control-group" id="durationGroup" role="group" aria-label="Test duration">
+          <button class="ctrl-btn" data-duration="30">30s</button>
+          <button class="ctrl-btn active" data-duration="60">1 min</button>
+          <button class="ctrl-btn" data-duration="120">2 min</button>
+          <button class="ctrl-btn" data-duration="180">3 min</button>
+          <button class="ctrl-btn" data-duration="unlimited">∞</button>
+        </div>
+        <div class="ctrl-sep" aria-hidden="true"></div>
+        <div class="control-group" id="difficultyGroup" role="group" aria-label="Difficulty">
+          <button class="ctrl-btn" data-difficulty="easy">Easy</button>
+          <button class="ctrl-btn active" data-difficulty="medium">Medium</button>
+          <button class="ctrl-btn" data-difficulty="hard">Hard</button>
+        </div>
+      </div>
+
+      <!-- Timer -->
+      <div class="timer-wrap" id="timerWrap">
+        <div class="timer-ring">
+          <svg class="timer-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="timer-track" cx="50" cy="50" r="42"/>
+            <circle class="timer-prog" id="timerProg" cx="50" cy="50" r="42"/>
+          </svg>
+          <div class="timer-num" id="timerNum">60</div>
+        </div>
+      </div>
+
+      <!-- Typing area -->
+      <div class="typing-area" id="typingArea" tabindex="0" role="textbox" aria-label="Typing test area">
+        <div class="text-display" id="textDisplay"></div>
+        <input
+          type="text"
+          class="ghost-input"
+          id="ghostInput"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="none"
+          spellcheck="false"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+        <div class="start-hint" id="startHint">
+          <span>click here</span> or press any key to start countdown
+        </div>
+      </div>
+
+      <!-- Live stats -->
+      <div class="live-stats" id="liveStats">
+        <div class="stat-chip">
+          <span class="sc-label">WPM</span>
+          <span class="sc-val" id="liveWpm">–</span>
+        </div>
+        <div class="stat-chip">
+          <span class="sc-label">ACC</span>
+          <span class="sc-val" id="liveAcc">–</span>
+        </div>
+      </div>
+
+      <!-- Test action buttons -->
+      <div class="test-actions">
+        <button class="btn-ghost btn-sm" id="restartBtn" title="Restart test">↺ Restart</button>
+        <button class="btn-stop hidden" id="stopBtn">■ Stop</button>
+      </div>
+
+    </section>
+
+    <!-- ===== RESULTS VIEW ===== -->
+    <section class="view" id="view-results">
+      <div class="results-card">
+
+        <!-- Mascot -->
+        <div class="mascot-wrap">
+          <div class="mascot-orb" id="mascotOrb">
+            <span class="mascot-emoji" id="mascotEmoji">🚀</span>
+          </div>
+          <p class="mascot-line" id="mascotLine">Rocket fingers!</p>
+        </div>
+
+        <!-- Main stats -->
+        <div class="result-hero">
+          <div class="rh-wpm">
+            <span class="rh-num" id="resWpm">0</span>
+            <span class="rh-unit">WPM</span>
+          </div>
+          <div class="rh-details">
+            <div class="rh-stat">
+              <span class="rhs-val" id="resAcc">0%</span>
+              <span class="rhs-lbl">Accuracy</span>
+            </div>
+            <div class="rh-stat">
+              <span class="rhs-val" id="resCorrect">0</span>
+              <span class="rhs-lbl">Correct</span>
+            </div>
+            <div class="rh-stat">
+              <span class="rhs-val" id="resErrors">0</span>
+              <span class="rhs-lbl">Errors</span>
+            </div>
+            <div class="rh-stat">
+              <span class="rhs-val" id="resElapsed">–</span>
+              <span class="rhs-lbl">Time Taken</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PB badge -->
+        <div class="pb-badge hidden" id="pbBadge">✦ New Personal Best!</div>
+
+        <!-- Save score -->
+        <div class="save-row">
+          <input type="text" id="usernameInput" class="name-input" placeholder="Your name (for leaderboard)" maxlength="20" autocomplete="username">
+          <button class="btn-primary" id="saveScoreBtn">Save Score</button>
+        </div>
+        <p class="save-note hidden" id="saveNote">Score saved!</p>
+
+        <!-- Actions -->
+        <div class="result-actions">
+          <button class="btn-secondary" id="retryBtn">Try Again</button>
+          <button class="btn-ghost" id="toAnalyticsBtn">View Analytics →</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== ANALYTICS VIEW ===== -->
+    <section class="view" id="view-analytics">
+      <div class="analytics-wrap">
+
+        <h2 class="sec-title">Analytics</h2>
+
+        <!-- Stat cards -->
+        <div class="stat-cards" id="statCards">
+          <div class="stat-card">
+            <div class="sc-big" id="aBestWpm">–</div>
+            <div class="sc-lab">Best WPM</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="aAvgWpm">–</div>
+            <div class="sc-lab">Avg WPM</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="aBestAcc">–</div>
+            <div class="sc-lab">Best Accuracy</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-big" id="aTotalTests">0</div>
+            <div class="sc-lab">Tests Taken</div>
+          </div>
+        </div>
+
+        <!-- Chart type toggle -->
+        <div class="chart-toggles">
+          <button class="chart-tog active" data-chart="progress">Progress</button>
+          <button class="chart-tog" data-chart="difficulty">By Difficulty</button>
+          <button class="chart-tog" data-chart="duration">By Duration</button>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-box">
+          <canvas id="mainChart"></canvas>
+          <div class="empty-chart hidden" id="emptyChart">Complete more tests to see your progress.</div>
+        </div>
+
+        <!-- Recent table -->
+        <h3 class="sub-title">Recent Tests</h3>
+        <div class="table-wrap">
+          <table class="data-table" id="recentTable">
+            <thead>
+              <tr>
+                <th>#</th><th>WPM</th><th>Accuracy</th><th>Difficulty</th><th>Mode</th><th>Time</th><th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recentBody"></tbody>
+          </table>
+          <div class="empty-state hidden" id="analyticsEmpty">No tests yet — go complete one!</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== LEADERBOARD VIEW ===== -->
+    <section class="view" id="view-leaderboard">
+      <div class="leaderboard-wrap">
+
+        <h2 class="sec-title">Leaderboard</h2>
+
+        <!-- Filters -->
+        <div class="lb-filters">
+          <div class="control-group" id="lbCountGroup">
+            <button class="ctrl-btn active" data-lb-count="5">Top 5</button>
+            <button class="ctrl-btn" data-lb-count="10">Top 10</button>
+            <button class="ctrl-btn" data-lb-count="20">Top 20</button>
+          </div>
+          <div class="ctrl-sep"></div>
+          <div class="control-group" id="lbDiffGroup">
+            <button class="ctrl-btn active" data-lb-diff="all">All</button>
+            <button class="ctrl-btn" data-lb-diff="easy">Easy</button>
+            <button class="ctrl-btn" data-lb-diff="medium">Medium</button>
+            <button class="ctrl-btn" data-lb-diff="hard">Hard</button>
+          </div>
+          <div class="ctrl-sep"></div>
+          <div class="control-group" id="lbDurGroup">
+            <button class="ctrl-btn active" data-lb-dur="all">All</button>
+            <button class="ctrl-btn" data-lb-dur="30">30s</button>
+            <button class="ctrl-btn" data-lb-dur="60">1m</button>
+            <button class="ctrl-btn" data-lb-dur="120">2m</button>
+            <button class="ctrl-btn" data-lb-dur="180">3m</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+          <table class="data-table" id="lbTable">
+            <thead>
+              <tr>
+                <th>Rank</th><th>Player</th><th>WPM</th><th>Accuracy</th><th>Difficulty</th><th>Duration</th><th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="lbBody"></tbody>
+          </table>
+          <div class="empty-state hidden" id="lbEmpty">No scores yet — be the first!</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/words.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
